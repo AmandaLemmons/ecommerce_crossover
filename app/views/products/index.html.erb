@@ -1,0 +1,16 @@
+<% if current_customer.nil? %>
+  <%= link_to "Sign Up", new_customer_registration_path %>
+  <%= link_to "Log In", new_customer_session_path %>
+<% else %>
+  <%= link_to "Log Out", destroy_customer_session_path, method: :delete %>
+  <%= current_customer.email%>
+
+<% end %>
+
+
+<% @products.each do |product| %>
+  <h3><%= product["name"] %></h3>
+  <p><%= product["description"] %></p>
+  <p>$<%= product["price"] %></p>
+  <p> <%= link_to "Add to cart", new_order_line_path(:id => product.id) %>
+<%end%>

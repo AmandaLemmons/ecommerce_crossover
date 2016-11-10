@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -30,6 +30,8 @@ gem 'faker', '~> 1.6.1'
 gem 'pry'
 gem 'pry-rails'
 gem 'pry-byebug'
+gem 'redis', '~> 3.0.1'
+gem 'hiredis', '~> 0.4.5'
 
 
 # Use ActiveModel has_secure_password

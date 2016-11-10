@@ -4,13 +4,17 @@
 <% else %>
   <%= link_to "Log Out", destroy_customer_session_path, method: :delete %>
   <%= current_customer.email%>
+  <li>
 
+  </li>
 <% end %>
 
+<h3 class="text-center">Products for Sale</h3>
 
-<% @products.each do |product| %>
-  <h3><%= product["name"] %></h3>
-  <p><%= product["description"] %></p>
-  <p>$<%= product["price"] %></p>
-  <p> <%= link_to "Add to cart", new_order_line_path(:id => product.id) %>
-<%end%>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <% @products.each do |product| %>
+      <%= render "product_row", product: product, order_line: @order_line%>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="col-md-6 col-md-offset-3">
+  <%= simple_form_for :charge do |f| %>
+    <%= f.input :name %>
+    <%= f.input :card_number %>
+    <%= f.input :exp_month %>
+    <%= f.input :exp_year %>
+    <%= f.input :cvc %>
+    <!-- <f.hidden_field :amount, value: @customer.email%> -->
+    <!-- <f.hidden_field :email, value: @customer.id%> -->
+    <%= f.submit  %>
+  <% end %>
+</div>

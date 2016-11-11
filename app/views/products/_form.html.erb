@@ -1,0 +1,7 @@
+<%= simple_form_for(@product) do |f| %>
+
+  <%=f.input :name, label: false, placeholder:   "Product Name" %>
+  <%=f.input :description, label: false, placeholder:   "Product Description"%>
+  <%=f.input :price, label: false, placeholder:   "Product Price" %>
+  <%=f.submit "Add Product", class: "btn btn-primary btn-large form-btn"%>
+<% end %>

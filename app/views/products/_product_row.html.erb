@@ -14,6 +14,7 @@
           <div class="input-group-btn">
             <%= f.hidden_field :product_id, value: product.id %>
             <%= f.submit "Add to Cart", class: "btn btn-primary" %>
+            <%= link_to "Edit Product", edit_product_path(id: product.id) %>
           </div>
         </div>
       <% end %>

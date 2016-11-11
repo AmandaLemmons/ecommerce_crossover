@@ -1,0 +1,13 @@
+<%= simple_form_for(@order) do |f| %>
+
+  <%=f.input :firstname, label: false, placeholder:   "Name on Card" %>
+  <!-- <%f.input :card_number, label: false, placeholder:   "Card Number"%>
+  <%f.input :exp_month, label: false, placeholder:   "Exp Month", collection: 1..12 %>
+  <%f.input :exp_year, label: false, placeholder:   "Exp Year", collection: 2016..2030 %>
+  <%f.input :cvc, label: false, placeholder:   "CVC"%> -->
+  <%=f.hidden_field :amount, value: @customer.email%>
+  <%=f.hidden_field :email, value: @customer.id%>
+
+
+  <%=f.submit "Add Product", class: "btn btn-primary btn-large form-btn"%>
+<% end %>

@@ -1,3 +1,4 @@
 <div class="shopping-cart">
   <%= render "shopping_cart" %>
+  <%= link_to "Complete Order", new_charge_path(id: @order_lines.first.order_id) %>
 </div>

@@ -3,10 +3,11 @@ Rails.application.routes.draw do
 
 
   root "products#index"
-  resources :products, only: [:index]
-  resource :cart, only: [:show]
   resources :order_lines, only: [:create, :update, :destroy]
-  resources :products, only: [:index]
+  resources :products
   resource :cart, only: [:show]
-
+  get 'complete_order/:id'=> "orders#complete_order", as: :complete_order
+  resources :orders
+  get 'new-charge' => 'charges#new', as: :new_charge
+  post 'new-charge' => 'charges#create', as: :new_payment
 end

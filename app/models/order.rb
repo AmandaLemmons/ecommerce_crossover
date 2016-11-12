@@ -3,6 +3,10 @@ class Order < ActiveRecord::Base
   before_save :update_total
   before_create :set_order_number
 
+  scope :in_cart, -> {where('order_no =?', '1')}
+  scope :processed_order, -> {where('order_no =?', '2')}
+
+
 
 
   def subtotal

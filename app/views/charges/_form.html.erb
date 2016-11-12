@@ -5,8 +5,8 @@
     <%= f.input :exp_month %>
     <%= f.input :exp_year %>
     <%= f.input :cvc %>
-    <!-- <f.hidden_field :amount, value: @customer.email%> -->
-    <!-- <f.hidden_field :email, value: @customer.id%> -->
+    <%= f.hidden_field :amount, value: current_order.subtotal%>
+    <%= f.hidden_field :email, value: @customer.email%>
     <%= f.submit  %>
   <% end %>
 </div>

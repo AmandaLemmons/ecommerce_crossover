@@ -10,10 +10,6 @@ class OrdersController < ApplicationController
     order = Order.new(order_params)
   end
 
-  # def complete_order
-  #   @order = Order.find(params[:id])
-  #   @customer = Customer.where(id: @order.customer_id)
-  # end
 
   private
 

@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   resource :cart, only: [:show]
   get 'complete_order/:id'=> "orders#complete_order", as: :complete_order
   resources :orders
-  get 'new-charge' => 'charges#new', as: :new_charge
-  post 'new-charge' => 'charges#create', as: :new_payment
+  get 'new-charge/:order_id/:customer_id' => 'charges#new', as: :new_charge
+  post 'new-charge/:order_id/:customer_id' => 'charges#create', as: :new_payment
 end

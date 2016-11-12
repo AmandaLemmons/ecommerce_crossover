@@ -5,17 +5,27 @@ class ChargesController < ApplicationController
   end
 
   def new
-    @order = Order.find(params[:id])
-    @customer = Customer.where(id: @order.customer_id)
+    @order = Order.find(params[:order_id])
+    @customer = Customer.find(params[:customer_id])
   end
 
   def create
-    response = Http.post("http://localhost:3000/charges.json", json: {charge:{email: params[:charge][:email], amount: params[:charge][:amount], card_number: params[:charge][:card_number], cvc: params[:charge][:cvc], exp_month: params[:charge][:exp_month], name: params[:charge][:name]}})
+    # @order = Order.find(params[:id])
+
+    response = Http.post("http://localhost:3000/charges.json", json: {charge:{email: params[:charge][:email], amount: params[:charge][:amount], card_number: params[:charge][:card_number], cvc: params[:charge][:cvc], exp_month: params[:charge][:exp_month], exp_year: params[:charge][:exp_year],name: params[:charge][:name]}})
 
     charge = JSON.parse(response)
     session[:email] = charge["email"]
     session[:name] = charge["name"]
     @charge = session[:charge]
+    # if status: 201
+    #   @order.update_order_number
+    # else
+    # end
+  end
 
+  private
+  def update_order_number
+    current_order.order_no = "2"
   end
 end

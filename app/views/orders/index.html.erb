@@ -1,0 +1,18 @@
+<h3> My Orders </h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th> Product </th>
+        <th> Price </th>
+        <th> Date </th>
+        <th> Order Id </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @orders.each do |order| %>
+        <%= render partial: "order_row", :locals => {:order  => order} %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>

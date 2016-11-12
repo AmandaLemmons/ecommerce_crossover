@@ -1,10 +1,17 @@
 class OrderLinesController < ApplicationController
   # before_action :authenticate_customer!
+
+  def new
+    @orderline = OrderLine.new
+    @product = Product.find(params[:id])
+    session[:order_id] = @order.id
+  end
   def create
     @order = current_order
     @order_line = @order.order_lines.new(order_line_params)
     @order.customer_id = current_customer.id
     @order.date = Date.today
+    @order.status = 0
     @order.save
 
     session[:order_id] = @order.id

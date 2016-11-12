@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110112728) do
+ActiveRecord::Schema.define(version: 20161112102116) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,27 +40,34 @@ ActiveRecord::Schema.define(version: 20161110112728) do
     t.integer  "order_id"
     t.integer  "product_id"
     t.integer  "qty"
-    t.decimal  "unit_price"
-    t.decimal  "total_price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.decimal  "unit_price",  precision: 12, scale: 2
+    t.decimal  "total_price", precision: 12, scale: 2
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  create_table "order_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.string   "order_no"
     t.integer  "customer_id"
-    t.decimal  "total"
+    t.decimal  "total",       precision: 12, scale: 2
     t.date     "date"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "status"
   end
 
   create_table "products", force: :cascade do |t|
     t.string   "description"
     t.string   "name"
-    t.decimal  "price"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.decimal  "price",       precision: 12, scale: 2
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.boolean  "status"
   end
 

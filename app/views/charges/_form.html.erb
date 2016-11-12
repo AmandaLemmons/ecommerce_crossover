@@ -2,8 +2,8 @@
   <%= simple_form_for :charge do |f| %>
     <%= f.input :name %>
     <%= f.input :card_number %>
-    <%= f.input :exp_month %>
-    <%= f.input :exp_year %>
+    <%= f.input :exp_month, collection: 1..12 %>
+    <%= f.input :exp_year, collection: 2016..2030 %>
     <%= f.input :cvc %>
     <%= f.hidden_field :amount, value: current_order.subtotal%>
     <%= f.hidden_field :email, value: @customer.email%>

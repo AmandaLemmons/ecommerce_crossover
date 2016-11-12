@@ -1,4 +1,4 @@
 <div class="shopping-cart">
   <%= render "shopping_cart" %>
-  <%= link_to "Complete Order", new_charge_path(order_id: @order_lines.first.order_id, customer_id:  @customer.id) %>
+  <%= link_to "Complete Order", new_charge_path(order_id: @order_lines.first.order_id, customer_id:  @customer.id), class: "btn btn-primary" %>
 </div>

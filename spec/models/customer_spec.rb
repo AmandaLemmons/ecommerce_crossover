@@ -27,13 +27,5 @@ RSpec.describe Customer, type: :model do
    describe "associations" do
      it { should have_many(:orders) }
    end
-   #
-  #  describe "secure password" do
-  #    it { is_expected.to have_secure_password }
-  #    it { is_expected.to validate_length_of(:password) }
-   #
-  #    it { expect(Customer.new({ firstname: "John", lastname: "Doe", email: "user@email.com", password: nil }).save).to be_falsey }
-  #    it { expect(Customer.new({ firstname: "John", lastname: "Doe", email: "user@email.com", password: "foo" }).save).to be_falsey }
-  #    it { expect(Customer.new({ firstname: "John", lastname: "Doe", email: "user@email.com", password: "af3714ff0ffae" }).save).to be_truthy }
-  #  end
+
  end

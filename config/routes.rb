@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :customers
 
 
-  resources :order_lines, only: [:create, :update, :destroy]
+  resources :order_lines, only: [:new, :create, :update, :destroy]
   resources :products
   resource :cart, only: [:show]
   resources :orders

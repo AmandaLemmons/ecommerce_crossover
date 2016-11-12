@@ -32,6 +32,8 @@ gem 'pry-rails'
 gem 'pry-byebug'
 gem 'redis', '~> 3.0.1'
 gem 'hiredis', '~> 0.4.5'
+gem 'rspec-rails', '~> 3.4'
+gem 'factory_girl_rails', '~> 4.5'
 
 
 # Use ActiveModel has_secure_password
@@ -42,6 +44,12 @@ gem 'hiredis', '~> 0.4.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.0', require: false
+  gem 'database_cleaner', '~> 1.5'
+  gem 'faker', '~> 1.6.1'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

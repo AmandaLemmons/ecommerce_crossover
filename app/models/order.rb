@@ -1,6 +1,5 @@
 class Order < ActiveRecord::Base
   has_many :order_lines
-  # belongs_to :order_status
   before_save :update_total
   before_create :set_order_status
   enum status: { in_cart: 0, processed: 1, rejected: 2}

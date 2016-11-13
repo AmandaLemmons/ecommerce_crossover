@@ -6,10 +6,6 @@ class ProductsController < ApplicationController
     @order_line = current_order.order_lines.new
   end
 
-  def add_to_cart
-    # @product = Product.find(params[:id])
-  end
-
   def new
     @product = Product.new
   end
@@ -25,7 +21,6 @@ class ProductsController < ApplicationController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
-    # @order_item = current_order.order_items.new
 
   end
 

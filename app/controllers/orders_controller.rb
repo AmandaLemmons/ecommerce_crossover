@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
   end
-  
+
   def new
     @order = Order.new
     @product = Product.find(params[:id])
@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
 
   def create
     order = Order.new(order_params)
-    # binding.pry
   end
 
 

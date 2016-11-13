@@ -7,12 +7,10 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name,:last_name, :password) }
-  
+
   end
 
   def current_order
-    # Order.where('customer_id =?', current_customer.id).where(order_no: "cart")
-
     if !session[:order_id].nil?
       Order.find(session[:order_id])
     else

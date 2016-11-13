@@ -13,7 +13,7 @@ class ChargesController < ApplicationController
   def create
     @order = Order.find(params[:order_id])
     product_id = current_order.order_lines.pluck(:product_id)
-    @product_name = Product.find(3).name
+    @product_name = Product.find(product_id).first.name
     customer_id = current_customer.id
     response = Http.post("http://localhost:3000/charges.json", json: {charge:{email: params[:charge][:email], amount: params[:charge][:amount], card_number: params[:charge][:card_number], cvc: params[:charge][:cvc], exp_month: params[:charge][:exp_month], exp_year: params[:charge][:exp_year], name: params[:charge][:name], customer_id: params[:charge][:customer_id], product_name: params[:charge][:product_name], date: params[:charge][:date]}})
 

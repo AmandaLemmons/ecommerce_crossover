@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'products#index'
-  devise_for :customers
+  devise_for :customers,  :controllers => {:registrations=> "registrations"}
 
   resources :orders
   resources :order_lines, only: [:new, :create, :update, :destroy]

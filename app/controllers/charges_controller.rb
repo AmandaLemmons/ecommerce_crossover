@@ -1,4 +1,5 @@
 class ChargesController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def index
     @charges = JSON.parse Http.headers("x-api-key" => "91d994652a17").get("http://localhost:3000/charges.json")
@@ -11,19 +12,21 @@ class ChargesController < ApplicationController
 
   def create
     @order = Order.find(params[:order_id])
-
-    response = Http.post("http://localhost:3000/charges.json", json: {charge:{email: params[:charge][:email], amount: params[:charge][:amount], card_number: params[:charge][:card_number], cvc: params[:charge][:cvc], exp_month: params[:charge][:exp_month], exp_year: params[:charge][:exp_year],name: params[:charge][:name]}})
+    product_id = current_order.order_lines.pluck(:product_id)
+    @product_name = Product.find(3).name
+    customer_id = current_customer.id
+    response = Http.post("http://localhost:3000/charges.json", json: {charge:{email: params[:charge][:email], amount: params[:charge][:amount], card_number: params[:charge][:card_number], cvc: params[:charge][:cvc], exp_month: params[:charge][:exp_month], exp_year: params[:charge][:exp_year], name: params[:charge][:name], customer_id: params[:charge][:customer_id], product_name: params[:charge][:product_name], date: params[:charge][:date]}})
 
     charge = JSON.parse(response)
     session[:email] = charge["email"]
     session[:name] = charge["name"]
     @charge = session[:charge]
-    if @charge.save
-      @order.status = 1
-    else
-      @order.status = 2
-    end
-    redirect_to orders_path
+    redirect_to my_orders_path
+  end
+
+  def my_orders
+    customer_id = current_customer.id
+    @orders = JSON.parse Http.headers("x-api-key" => "91d994652a17").get("http://localhost:3000/charges/#{customer_id}.json")
   end
 
   private

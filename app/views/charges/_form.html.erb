@@ -7,6 +7,10 @@
     <%= f.input :cvc %>
     <%= f.hidden_field :amount, value: current_order.subtotal%>
     <%= f.hidden_field :email, value: @customer.email%>
+    <%= f.hidden_field :customer_id, value: @customer.id%>
+    <%= f.hidden_field :product_name, value: @product_name%>
+    <%= f.hidden_field :date, value: Date.today%>
+
     <%= f.submit  %>
   <% end %>
 </div>

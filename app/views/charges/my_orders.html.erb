@@ -9,9 +9,10 @@
       </tr>
     </thead>
     <tbody>
+      <% @orders.each do |order| %>
+
       <tr>
-        <% @orders.each do |order| %>
-        <%= render partial: "order_row", :locals => {:order  => order} %>
+        <%= render partial: "orders_row", :locals => {:order  => order} %>
       </tr>
       <% end %>
     </tbody>

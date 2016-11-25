@@ -8,9 +8,19 @@ RSpec.describe Order, type: :model do
      it { is_expected.to have_db_column(:date).of_type(:date) }
      it { is_expected.to have_db_column(:status).of_type(:integer) }
    end
-
-
    describe "associations" do
      it { should have_many(:order_lines) }
    end
+
+   it "sets total price" do
+     order =   Order.create({})
+     product = Product.create({:description => "wooden table", :name => "Table", :price => "20,"})
+
+     order_lines =  OrderLine.create({:qty => '5', :unit_price =>'20', order_id: order.id, product_id: product.id})
+    
+     expect(order.subtotal).to  eq(100)
+   end
+
+
+
  end
